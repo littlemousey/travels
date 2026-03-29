@@ -4,15 +4,16 @@ import { theme } from '../../styles/GlobalStyles';
 export const StoryHeader = () => {
   return (
     <Header className="story-header">
-      <Eyebrow>Een leven in kaart</Eyebrow>
+      <Eyebrow>Mijn leven tot nu toe in kaart</Eyebrow>
       <Title>
-        Mijn <em>wereld</em>
+        Mijn <em>35 jarige</em>
         <br />
-        ontdekken
+        reis
       </Title>
       <Intro>
-        Scroll door de jaren heen en volg de plekken die mij hebben gevormd — van
-        de eerste adem tot de eerste grote avonturen.
+        Al van jongs af aan heb ik veel mooie plekken bezocht.
+        Het leek mij leuk om een overzicht te krijgen van waar op de wereld ik geweest ben.
+        Scroll door de reis van mijn leven
       </Intro>
     </Header>
   );
