@@ -6,8 +6,8 @@ export const MapOverlay = () => {
     <Overlay>
       <Vignette />
       <TitleBadge>
-        <Title>Ans' Reisherinneringen</Title>
-        <Subtitle>1991 — 1993</Subtitle>
+        <Title>Ans' reizen</Title>
+        <Subtitle>1991 — 2026</Subtitle>
       </TitleBadge>
     </Overlay>
   );
