@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Chapter as ChapterType } from '../../types';
 import { theme } from '../../styles/GlobalStyles';
+import { useChapter } from '../../context/ChapterContext';
 
 interface ChapterProps {
   chapter: ChapterType;
@@ -10,8 +11,20 @@ interface ChapterProps {
 }
 
 export const Chapter: React.FC<ChapterProps> = ({ chapter, isActive, index }) => {
+  const { setCurrentChapterIndex } = useChapter();
+
+  const handleClick = () => {
+    setCurrentChapterIndex(index);
+    
+    // Scroll the chapter into view
+    const chapterElement = document.querySelector(`[data-chapter-index="${index}"]`);
+    if (chapterElement) {
+      chapterElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   return (
-    <ChapterCard isActive={isActive} data-chapter-index={index}>
+    <ChapterCard isActive={isActive} data-chapter-index={index} onClick={handleClick}>
       <ChapterMeta>
         <ChapterYear>{chapter.year}</ChapterYear>
         <div>
@@ -42,11 +55,16 @@ export const Chapter: React.FC<ChapterProps> = ({ chapter, isActive, index }) =>
 const ChapterCard = styled.div<{ isActive: boolean }>`
   padding: 3.5rem 3rem;
   border-bottom: 1px solid ${theme.colors.lightSepia};
-  transition: background 0.4s ease;
+  transition: all 0.4s ease;
   position: relative;
-  cursor: default;
+  cursor: pointer;
   background: ${(props) =>
     props.isActive ? 'rgba(201, 168, 76, 0.06)' : 'transparent'};
+
+  &:hover {
+    background: ${(props) =>
+      props.isActive ? 'rgba(201, 168, 76, 0.08)' : 'rgba(201, 168, 76, 0.03)'};
+  }
 
   &::before {
     content: '';
