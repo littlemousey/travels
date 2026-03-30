@@ -17,9 +17,7 @@ const Container = styled.div`
   height: 100vh;
   overflow: hidden;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
-    overflow: auto;
-    height: auto;
   }
 `;

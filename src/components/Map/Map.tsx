@@ -24,7 +24,8 @@ export const Map: React.FC = () => {
       bearing: chapters[0].bearing,
       scrollZoom: false,
       dragPan: true,
-      touchZoomRotate: false,
+      touchZoomRotate: true,
+      touchPitch: true,
     });
 
     map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
@@ -146,6 +147,12 @@ const MapContainer = styled.div`
   width: 55%;
   height: 100vh;
   flex-shrink: 0;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    height: 65vh;
+    position: relative;
+  }
 `;
 
 const MapDiv = styled.div`

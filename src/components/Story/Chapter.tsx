@@ -79,6 +79,11 @@ const ChapterCard = styled.div<{ isActive: boolean }>`
         : 'transparent'};
     transition: background 0.4s ease;
   }
+
+  @media (max-width: 1024px) {
+    padding: 2rem 1.5rem;
+    border-bottom: none;
+  }
 `;
 
 const ChapterMeta = styled.div`

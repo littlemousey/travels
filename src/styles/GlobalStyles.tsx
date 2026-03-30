@@ -41,6 +41,12 @@ export const GlobalStyles = () => (
         overflow: hidden;
       }
 
+      @media (max-width: 1024px) {
+        body {
+          overflow: hidden;
+        }
+      }
+
       /* MapLibre GL popup styles */
       .maplibregl-popup-content {
         font-family: ${theme.fonts.body};
