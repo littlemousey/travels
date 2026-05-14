@@ -9,6 +9,8 @@ export const theme = {
     muted: '#6b5d4f',
     accent: '#3d6b5e',
     lightSepia: '#e8ddd0',
+    navy: '#1e2a38',
+    navyDark: '#151e28',
   },
   fonts: {
     heading: "'Playfair Display', serif",
