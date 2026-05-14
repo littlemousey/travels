@@ -75,4 +75,9 @@ export const markers: Marker[] = [
   { coords: [105.1667, -2.0667], label: 'Mentok', sub: 'Indonesië' },
   { coords: [24.0189, 35.5138], label: 'Chaniá', sub: 'Kreta' },
   { coords: [24.1833, 35.2667], label: 'Imbros Kloof', sub: 'Kreta' },
+  { coords: [5.0361, 52.1394], label: '\'t Palet', sub: 'Maarssen' },
+  { coords: [4.6500, 52.4300], label: 'Spaarnwoude', sub: 'Haarlem' },
+  { coords: [5.1100, 52.1050], label: 'College de Klop', sub: 'Utrecht' },
+  { coords: [5.1400, 52.0950], label: 'Gerrit Rietveld College', sub: 'Utrecht' },
+  { coords: [3.6133, 51.4981], label: 'Middelburg', sub: 'Zeeland' },
 ];
