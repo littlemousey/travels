@@ -6,11 +6,11 @@ export const StoryFooter = () => {
     <Footer>
       <Ornament>✦ ◆ ✦</Ornament>
       <Text>
-        Dit zijn slechts de eerste stappen
+        Leuk dat je zo ver bent gekomen!
         <br />
-        van een leven vol ontdekkingen.
+        Dit waren mijn avonturen tot nu toe
         <br />
-        <em>Het verhaal gaat nog steeds verder.</em>
+        Maar de reis gaat nog door...!
       </Text>
     </Footer>
   );

@@ -523,9 +523,9 @@ export const chapters: Chapter[] = [
     year: '2006',
     period: 'Februari',
     flag: '🇳🇱',
-    heading: 'Zeeland met Nadieh',
+    heading: 'Zeeland in Roompot huisje',
     locationTag: 'Renesse, Zeeland',
-    content: 'Een winterse uitstap naar Renesse in Zeeland met Nadieh. De Zeeuwse kust in februari — frisse zeewind, lege stranden en de rust van de Noordzee. Het charmante badplaatsje aan de Brouwersdam, een oase van kalmte buiten het seizoen.',
+    content: 'Een winterse uitstap naar Renesse in Zeeland met het gezin en vrienden. De Zeeuwse kust in februari — frisse zeewind, lege stranden en de rust van de Noordzee. Het charmante badplaatsje aan de Brouwersdam, een oase van kalmte buiten het seizoen.',
     markerIndices: [62],
   },
   {

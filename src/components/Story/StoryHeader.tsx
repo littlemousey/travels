@@ -15,7 +15,8 @@ export const StoryHeader = () => {
         Misschien is daardoor mijn reislust ontstaan.
         Het leek mij leuk om een overzicht te krijgen van waar op de wereld ik geweest ben.
         Scroll door de reis van mijn leven.
-        Om het overzicht een beetje te bewaren heb ik voor het gemak wat steden (vooral binnen Nederland) weggelaten.
+        <br />
+        Om het overzicht een beetje te bewaren heb ik voor het gemak wat steden weggelaten.
       </Intro>
     </Header>
   );
