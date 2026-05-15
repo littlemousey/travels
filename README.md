@@ -16,6 +16,9 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
 ## 🛠️ Technology Stack
@@ -85,6 +88,33 @@ npm run lint
 # Type check
 npx tsc --noEmit
 ```
+
+## 🚀 Deployment
+
+This project is configured for GitHub Pages deployment:
+
+### Deploy to GitHub Pages
+
+```bash
+npm run deploy
+```
+
+This command:
+1. Builds the production bundle with TypeScript compilation
+2. Deploys the `dist/` folder to the `gh-pages` branch
+3. Makes the site available at `https://[username].github.io/travels/`
+
+### Configuration
+
+- **Base Path**: Set to `/travels/` in `vite.config.ts` for GitHub Pages
+- **Deploy Tool**: Uses `gh-pages` package for automated deployment
+- **Build Output**: `dist/` directory contains the production build
+
+### First-Time Setup
+
+1. Ensure your repository is named `travels` or update the `base` path in `vite.config.ts`
+2. Enable GitHub Pages in repository settings (Settings → Pages → Source: gh-pages branch)
+3. Run `npm run deploy` to publish
 
 ### Adding New Travels
 
