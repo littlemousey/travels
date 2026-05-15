@@ -80,6 +80,7 @@ export const markers: Marker[] = [
   { coords: [5.1100, 52.1050], label: 'College de Klop', sub: 'Utrecht' },
   { coords: [5.1400, 52.0950], label: 'Gerrit Rietveld College', sub: 'Utrecht' },
   { coords: [3.6133, 51.4981], label: 'Middelburg', sub: 'Zeeland' },
+  { coords: [5.1715, 52.0858], label: 'Minnaertgebouw', sub: 'Universiteit Utrecht' },
   { coords: [136.6256, 36.5619], label: 'Kanazawa', sub: 'Japan' },
   { coords: [135.5022, 34.6937], label: 'Osaka', sub: 'Japan' },
   { coords: [139.6917, 35.6895], label: 'Tokio', sub: 'Japan' },

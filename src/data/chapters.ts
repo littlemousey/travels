@@ -16,6 +16,8 @@ export const chapters: Chapter[] = [
     locationTag: 'Ziekenhuis Overvecht, Utrecht',
     content: 'Op 30 augustus 1991 begon mijn verhaal. In ziekenhuis Overvecht in Utrecht werd ik geboren.',
     markerIndices: [0],
+    category: 'milestone',
+    milestoneIcon: '⭐',
   },
   {
     id: 'maarssen',
@@ -181,6 +183,8 @@ export const chapters: Chapter[] = [
     locationTag: '\'t Palet, Maarssen',
     content: 'Mijn eerste dagen op basisschool \'t Palet in Maarssendorp. Een nieuw hoofdstuk begint — de schoolbanken, nieuwe vrienden en de opwinding van het leren. Het begin van een avontuur dat acht jaar zou duren.',
     markerIndices: [74],
+    category: 'milestone',
+    milestoneIcon: '⭐',
   },
   {
     id: 'slowakije',
@@ -460,6 +464,8 @@ export const chapters: Chapter[] = [
     locationTag: 'College de Klop, Overvecht',
     content: 'De grote stap naar de middelbare school — de brugklas op College de Klop in Overvecht, Utrecht. Nieuwe klasgenoten, vakken en docenten. Het begin van een nieuwe fase, vol uitdagingen en kansen.',
     markerIndices: [76],
+    category: 'milestone',
+    milestoneIcon: '⭐',
   },
   {
     id: 'hongarije2003',
@@ -592,6 +598,8 @@ export const chapters: Chapter[] = [
     locationTag: 'Gerrit Rietveld College, Tuindorp',
     content: 'Een nieuwe start op een andere locatie van de middelbare school — het Gerrit Rietveld College in Tuindorp, Utrecht. Een frisse omgeving, nieuwe kansen en voortzetting van de middelbare schooltijd in een andere setting.',
     markerIndices: [77],
+    category: 'milestone',
+    milestoneIcon: '⭐',
   },
   {
     id: 'newcastle',
@@ -739,6 +747,24 @@ export const chapters: Chapter[] = [
     markerIndices: [47],
   },
   {
+    id: 'universiteit',
+    title: 'Universiteit Utrecht',
+    date: 'September 2009',
+    center: [5.1715, 52.0858],
+    zoom: 14,
+    pitch: 30,
+    bearing: 15,
+    year: '2009',
+    period: 'September',
+    flag: '🇳🇱',
+    heading: 'Informatiekunde',
+    locationTag: 'Minnaertgebouw, De Uithof',
+    content: 'Een nieuwe fase begint — studeren aan de Universiteit Utrecht. Informatiekunde in het iconische Minnaertgebouw op de Uithof, een moderne campus vol mogelijkheden. Colleges, werkgroepen, nieuwe medestudenten en het begin van academisch onderzoek. De overstap van middelbare school naar universiteit, van leerling naar student.',
+    markerIndices: [79],
+    category: 'milestone',
+    milestoneIcon: '⭐',
+  },
+  {
     id: 'japan2010',
     title: 'Kanazawa · Osaka · Tokio · Nara',
     date: 'Juni 2010',
@@ -753,7 +779,7 @@ export const chapters: Chapter[] = [
     locationTag: 'Kanazawa · Osaka · Tokio · Nara, Japan',
     content: 'Een onvergetelijke uitwisseling naar Japan via een internationale school. Vijf weken verblijven bij een gastgezin in Kanazawa — elke ochtend Japanse lessen en culturele activiteiten. In de weekenden verkennen van het land: het bruisende Osaka, de megacity Tokio en het historische Nara met zijn tempelcomplexen en vriendelijke herten. Een diepe onderdompeling in de Japanse cultuur.',
     stops: ['Kanazawa', 'Osaka', 'Tokio', 'Nara'],
-    markerIndices: [79, 80, 81, 82],
+    markerIndices: [80, 81, 82, 83],
   },
   {
     id: 'oberhausen2010',
@@ -786,7 +812,7 @@ export const chapters: Chapter[] = [
     locationTag: 'Rusland',
     content: 'Een grootse reis door Rusland. Moskou met het Rode Plein en het Kremlin, de kracht van de Russische geschiedenis. Sint Petersburg, de culturele hoofdstad met zijn paleizen en de Hermitage. Dan zuidwaarts naar de Zwarte Zeekust — Novorossiysk, Natukhayevskaya en het subtropische Sochi. Van de noordelijke grandeur naar de zuidelijke warmte.',
     stops: ['Moskou', 'Sint Petersburg', 'Novorossiysk', 'Natukhayevskaya', 'Sochi'],
-    markerIndices: [83, 84, 85, 86, 87],
+    markerIndices: [84, 85, 86, 87, 88],
   },
   {
     id: 'valkenburg2011',
@@ -802,7 +828,7 @@ export const chapters: Chapter[] = [
     heading: 'Kerstgrotten',
     locationTag: 'Valkenburg, Limburg',
     content: 'Kerstmarkt in Valkenburg met familie — de beroemde ondergrondse kerstmarkt in de Gemeentegrot en Fluweelengrot. De magische sfeer van de grotten, versierd met lichtjes en kersttaferelen. Een unieke Nederlandse kerstervaring in het Limburgse heuvelland.',
-    markerIndices: [88],
+    markerIndices: [89],
   },
   {
     id: 'wuhan2012',
@@ -817,8 +843,10 @@ export const chapters: Chapter[] = [
     flag: '🇨🇳',
     heading: 'Universiteitsuitwisseling',
     locationTag: 'Wuhan, China',
-    content: 'Een semester studeren aan Wuhan University als universitaire uitwisseling. De bruisende megacity aan de Yangtze-rivier — een mix van modern China en rijke geschiedenis. Colleges, nieuwe vrienden uit de hele wereld en een intensieve onderdompeling in de Chinese cultuur en taal.',
-    markerIndices: [89],
+    content: 'Een semester studeren aan Wuhan University als universitaire uitwisseling vanuit Universiteit Utrecht voor mijn minor. De bruisende megacity aan de Yangtze-rivier — een mix van modern China en rijke geschiedenis. Colleges, nieuwe vrienden uit de hele wereld en een intensieve onderdompeling in de Chinese cultuur en taal.',
+    markerIndices: [90],
+    category: 'milestone',
+    milestoneIcon: '⭐',
   },
   {
     id: 'beijing2012',
@@ -834,7 +862,7 @@ export const chapters: Chapter[] = [
     heading: 'Kerst in de hoofdstad',
     locationTag: 'Beijing, China',
     content: 'Kerstvakantie in Beijing — de Verboden Stad, de Grote Muur, het Zomerpaleis. De grootsheid van de Chinese hoofdstad ervaren met zijn duizenden jaren geschiedenis. Pekingeend, hutongs en de energie van één van `s werelds grootste metropolen.',
-    markerIndices: [90],
+    markerIndices: [91],
   },
   {
     id: 'azie2013',
@@ -851,7 +879,7 @@ export const chapters: Chapter[] = [
     locationTag: 'China & Indonesië',
     content: 'Een epische reis door Azië. Eerst met mijn zus vanuit Wuhan op reis — via het historische Nanjing naar Xi\'an met het Terracottaleger. Dan Beijing met de Verboden Stad en de Grote Muur. In Shanghai herenigen we met onze ouders, de skyline langs de Bund en de energie van deze megacity. Samen door naar Hong Kong — de verticale stad tussen bergen en zee, dim sum en wolkenkrabbers. Vervolgens naar Indonesië: Jakarta waar een vriendin zich bij ons voegt. Yogyakarta met de majestueuze tempels Borobudur en Prambanan. En Mentok (Muntok) op het eiland Bangka — een verborgen parel. Cultuur, tempels en tropische eilanden.',
     stops: ['Wuhan', 'Nanjing', 'Xi\'an', 'Beijing', 'Shanghai', 'Hong Kong', 'Jakarta', 'Yogyakarta', 'Mentok'],
-    markerIndices: [89, 91, 92, 93, 67, 68, 69, 70, 71],
+    markerIndices: [90, 92, 93, 94, 67, 68, 69, 70, 71],
   },
   {
     id: 'kreta',

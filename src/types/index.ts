@@ -14,6 +14,8 @@ export interface Chapter {
   content: string;
   stops?: string[];
   markerIndices: number[];
+  category?: 'milestone' | 'travel';
+  milestoneIcon?: string;
 }
 
 export interface Marker {
