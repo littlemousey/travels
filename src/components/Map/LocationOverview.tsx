@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import styled from '@emotion/styled';
 import { useChapter } from '../../context/ChapterContext';
@@ -8,23 +8,7 @@ export const LocationOverview: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markersRef = useRef<maplibregl.Marker[]>([]);
-  const { chapters, markers } = useChapter();
-
-  // Create a mapping from marker index to location tags
-  const markerToLocationTags = useMemo(() => {
-    const mapping: Map<number, string[]> = new Map();
-    
-    chapters.forEach(chapter => {
-      chapter.markerIndices.forEach(markerIdx => {
-        if (!mapping.has(markerIdx)) {
-          mapping.set(markerIdx, []);
-        }
-        mapping.get(markerIdx)!.push(chapter.locationTag);
-      });
-    });
-    
-    return mapping;
-  }, [chapters]);
+  const { markers } = useChapter();
 
   // Initialize map
   useEffect(() => {
@@ -32,21 +16,22 @@ export const LocationOverview: React.FC = () => {
 
     const map = new maplibregl.Map({
       container: mapContainerRef.current,
-      style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+      style: 'https://demotiles.maplibre.org/globe.json', // Official globe style
       center: [15, 30],
-      zoom: 2,
+      zoom: 1.5,
       pitch: 0,
       bearing: 0,
       scrollZoom: true,
       dragPan: true,
       touchZoomRotate: true,
+      dragRotate: true,
     });
 
     map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
 
     // Add markers after map loads
     map.on('load', () => {
-      markers.forEach((marker, i) => {
+      markers.forEach((marker) => {
         // Outer container - MapLibre will position this
         const outerEl = document.createElement('div');
         outerEl.className = 'marker-container';
@@ -84,14 +69,8 @@ export const LocationOverview: React.FC = () => {
 
         outerEl.appendChild(innerEl);
 
-        // Get location tags for this marker
-        const locationTags = markerToLocationTags.get(i) || [];
-        const uniqueTags = Array.from(new Set(locationTags));
-        
-        // Create popup content with location tag(s)
-        const popupContent = uniqueTags.length > 0 
-          ? uniqueTags.map(tag => `<div style="margin: 4px 0;">${tag}</div>`).join('')
-          : `<div>${marker.label}<br/>${marker.sub}</div>`;
+        // Create popup content with marker location
+        const popupContent = `<div style="font-weight: 500;">${marker.label}</div><div style="opacity: 0.85; font-style: italic; margin-top: 2px;">${marker.sub}</div>`;
 
         const popup = new maplibregl.Popup({ 
           offset: 20, 
@@ -116,7 +95,7 @@ export const LocationOverview: React.FC = () => {
     return () => {
       map.remove();
     };
-  }, [chapters, markers, markerToLocationTags]);
+  }, [markers]);
 
   return (
     <Container>
