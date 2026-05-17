@@ -95,4 +95,11 @@ export const markers: Marker[] = [
   { coords: [118.7969, 32.0603], label: 'Nanjing', sub: 'China' },
   { coords: [108.9398, 34.3416], label: 'Xi\'an', sub: 'China' },
   { coords: [116.4074, 39.9042], label: 'Beijing', sub: 'China' },
+  { coords: [4.8897, 52.3676], label: 'Universiteit van Amsterdam', sub: 'Amsterdam' },
+  { coords: [5.3042, 51.6878], label: 'Den Bosch', sub: '\'s-Hertogenbosch' },
+  { coords: [5.0106, 52.1043], label: 'Vleuten', sub: 'Utrecht' },
+  { coords: [5.0550, 52.1350], label: 'Maarssenbroek', sub: 'Maarssen' },
+  { coords: [6.7735, 51.2277], label: 'Düsseldorf', sub: 'Duitsland' },
+  { coords: [2.8850, 50.8503], label: 'Ieper', sub: 'België' },
+  { coords: [3.0586, 50.6292], label: 'Lille', sub: 'Frankrijk' },
 ];
