@@ -151,6 +151,11 @@ const MapDiv = styled.div`
   width: 100%;
   height: 100%;
   
+  .maplibregl-ctrl-bottom-right {
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+  
   .maplibregl-popup-content {
     background: ${theme.colors.navy};
     color: ${theme.colors.cream};
