@@ -22,7 +22,7 @@ export const Map: React.FC = () => {
       zoom: chapters[0].zoom,
       pitch: chapters[0].pitch,
       bearing: chapters[0].bearing,
-      scrollZoom: false,
+      scrollZoom: true,
       dragPan: true,
       touchZoomRotate: true,
       touchPitch: true,
