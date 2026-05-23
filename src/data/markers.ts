@@ -139,4 +139,11 @@ export const markers: Marker[] = [
   { coords: [129.0403, 35.1796], label: 'Busan', sub: 'Zuid-Korea' },
   { coords: [127.1478, 35.8242], label: 'Jeonju', sub: 'Zuid-Korea' },
   { coords: [129.2247, 35.8562], label: 'Gyeongju', sub: 'Zuid-Korea' },
+  { coords: [-7.9304, 37.0194], label: 'Faro', sub: 'Portugal' },
+  { coords: [12.3864, 43.1107], label: 'Perugia', sub: 'Italië' },
+  { coords: [10.5027, 43.8376], label: 'Lucca', sub: 'Italië' },
+  { coords: [11.0438, 43.4677], label: 'San Gimignano', sub: 'Italië' },
+  { coords: [12.1133, 42.7172], label: 'Orvieto', sub: 'Italië' },
+  { coords: [12.7172, 42.5494], label: 'Civita di Bagnoregio', sub: 'Italië' },
+  { coords: [12.7158, 42.5550], label: 'Cascata delle Marmore', sub: 'Italië' },
 ];
