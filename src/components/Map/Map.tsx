@@ -145,12 +145,12 @@ const MapContainer = styled.div`
   position: sticky;
   top: 0;
   width: 55%;
-  height: 100vh;
+  height: 100%;
   flex-shrink: 0;
 
   @media (max-width: 1024px) {
     width: 100%;
-    height: 65vh;
+    height: 45%;
     position: relative;
   }
 `;

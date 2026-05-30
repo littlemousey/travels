@@ -40,6 +40,7 @@ export const GlobalStyles = () => (
 
       #root {
         height: 100vh;
+        height: 100dvh;
         overflow: hidden;
       }
 
