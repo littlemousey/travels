@@ -4,7 +4,7 @@ export const theme = {
   colors: {
     cream: '#f5f0e8',
     ink: '#1a1612',
-    sepia: '#8b6f47',
+    sepia: '#6e4d2b',
     gold: '#c9a84c',
     muted: '#6b5d4f',
     accent: '#3d6b5e',
@@ -14,7 +14,7 @@ export const theme = {
   },
   fonts: {
     heading: "'Playfair Display', serif",
-    body: "'Cormorant Garamond', serif",
+    body: "'Source Sans 3', sans-serif",
   },
 };
 
