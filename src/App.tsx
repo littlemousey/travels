@@ -4,8 +4,9 @@ import { ChapterProvider } from './context/ChapterContext';
 import { GlobalStyles, theme } from './styles/GlobalStyles';
 import { TravelMemories } from './components/Layout/TravelMemories';
 import { LocationOverview } from './components/Map/LocationOverview';
+import { DecadeOverview } from './components/Layout/DecadeOverview';
 
-type TabType = 'stories' | 'overview';
+type TabType = 'stories' | 'overview' | 'decades';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('stories');
@@ -27,9 +28,15 @@ const App: React.FC = () => {
           >
             Overzicht locaties
           </TabButton>
+          <TabButton 
+            active={activeTab === 'decades'} 
+            onClick={() => setActiveTab('decades')}
+          >
+            Per decennium
+          </TabButton>
         </TabNavigation>
         <TabContent>
-          {activeTab === 'stories' ? <TravelMemories /> : <LocationOverview />}
+          {activeTab === 'stories' ? <TravelMemories /> : activeTab === 'overview' ? <LocationOverview /> : <DecadeOverview />}
         </TabContent>
       </AppContainer>
     </ChapterProvider>
