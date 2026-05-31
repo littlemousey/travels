@@ -29,6 +29,33 @@ export const LocationOverview: React.FC = () => {
 
     map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
 
+    // MapLibre HTML-markers zijn gewone DOM-elementen en worden altijd gerenderd,
+    // ook als ze aan de achterkant van de bol zitten. Deze functie berekent bij
+    // elke camerabeweging of een marker op de zichtbare hemisfeer staat via het
+    // inwendig product van de eenheidsvectoren van de camerafocus en de marker:
+    //
+    //   sin(φ_c)·sin(φ_m) + cos(φ_c)·cos(φ_m)·cos(λ_m − λ_c) > 0
+    //
+    // Positief → marker staat binnen 90° van de kijkrichting → zichtbaar.
+    // Negatief of nul → marker zit achter de bol → verborgen.
+    const updateMarkerVisibility = () => {
+      const center = map.getCenter();
+      const cLng = center.lng * (Math.PI / 180);
+      const cLat = center.lat * (Math.PI / 180);
+
+      markersRef.current.forEach((mapMarker) => {
+        const { lng, lat } = mapMarker.getLngLat();
+        const mLng = lng * (Math.PI / 180);
+        const mLat = lat * (Math.PI / 180);
+
+        const dot =
+          Math.sin(cLat) * Math.sin(mLat) +
+          Math.cos(cLat) * Math.cos(mLat) * Math.cos(mLng - cLng);
+
+        mapMarker.getElement().style.visibility = dot > 0 ? 'visible' : 'hidden';
+      });
+    };
+
     // Add markers after map loads
     map.on('load', () => {
       markers.forEach((marker) => {
@@ -88,7 +115,11 @@ export const LocationOverview: React.FC = () => {
 
         markersRef.current.push(mapMarker);
       });
+
+      updateMarkerVisibility();
     });
+
+    map.on('move', updateMarkerVisibility);
 
     mapRef.current = map;
 
