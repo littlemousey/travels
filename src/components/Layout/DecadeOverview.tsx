@@ -35,6 +35,8 @@ const CONTINENT_OVERRIDES: Record<string, Continent[]> = {
   azie2013:           ['Azië'],
   rusland2011:        ['Europa'],
   korea2017:          ['Azië'],
+  canada2019:         ['Noord-Amerika'],
+  taiwan2026:         ['Azië'],
 };
 
 function getContinents(ch: Chapter): Continent[] {
