@@ -10,6 +10,9 @@ export const Map: React.FC = () => {
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markersRef = useRef<maplibregl.Marker[]>([]);
   const { currentChapterIndex, chapters, markers } = useChapter();
+  // Always-current ref so async map.on('load') can read the latest chapter index
+  const currentChapterIndexRef = useRef(currentChapterIndex);
+  currentChapterIndexRef.current = currentChapterIndex;
 
   // Initialize map
   useEffect(() => {
@@ -32,8 +35,11 @@ export const Map: React.FC = () => {
 
     // Add markers after map loads
     map.on('load', () => {
-      markers.forEach((marker, i) => {
-        // Outer container - MapLibre will position this
+      // Clear stale markers from any previous map instance (React StrictMode runs
+      // effects twice in development, which would otherwise double the array).
+      markersRef.current = [];
+
+      markers.forEach((marker) => {
         const outerEl = document.createElement('div');
         outerEl.className = 'marker-container';
         Object.assign(outerEl.style, {
@@ -41,10 +47,8 @@ export const Map: React.FC = () => {
           height: '18px',
         });
 
-        // Inner element - our styling and animations
         const innerEl = document.createElement('div');
         innerEl.className = 'custom-marker';
-        if (i === 0) innerEl.classList.add('active-marker');
 
         Object.assign(innerEl.style, {
           width: '100%',
@@ -74,7 +78,7 @@ export const Map: React.FC = () => {
         const popup = new maplibregl.Popup({ offset: 20, closeButton: true })
           .setHTML(`<h3>${marker.label}</h3><p>${marker.sub}</p>`);
 
-        const mapMarker = new maplibregl.Marker({ 
+        const mapMarker = new maplibregl.Marker({
           element: outerEl,
           anchor: 'bottom'
         })
@@ -83,6 +87,19 @@ export const Map: React.FC = () => {
           .addTo(map);
 
         markersRef.current.push(mapMarker);
+      });
+
+      // Apply the correct active state once, after all markers exist, based on
+      // the current chapter at the time the map finishes loading.
+      const activeIndices = chapters[currentChapterIndexRef.current].markerIndices;
+      markersRef.current.forEach((mapMarker, i) => {
+        const outerEl = mapMarker.getElement();
+        const innerEl = outerEl.querySelector('.custom-marker') as HTMLElement;
+        if (!innerEl || !activeIndices.includes(i)) return;
+        innerEl.classList.add('active-marker');
+        innerEl.style.background = theme.colors.accent;
+        outerEl.style.width = '22px';
+        outerEl.style.height = '22px';
       });
     });
 

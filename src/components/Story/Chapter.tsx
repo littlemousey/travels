@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Chapter as ChapterType } from '../../types';
 import { theme } from '../../styles/GlobalStyles';
 import { useChapter } from '../../context/ChapterContext';
+import { lockScrollChapter } from '../../hooks/useScrollChapter';
 
 interface ChapterProps {
   chapter: ChapterType;
@@ -15,8 +16,7 @@ export const Chapter: React.FC<ChapterProps> = ({ chapter, isActive, index }) =>
 
   const handleClick = () => {
     setCurrentChapterIndex(index);
-    
-    // Scroll the chapter into view
+    lockScrollChapter();
     const chapterElement = document.querySelector(`[data-chapter-index="${index}"]`);
     if (chapterElement) {
       chapterElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
