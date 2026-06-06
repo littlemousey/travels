@@ -12,4 +12,17 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    // maplibre-gl is ~1 MB minified and cannot be split further; raise the limit to suppress the warning
+    chunkSizeWarningLimit: 1100,
+    rollupOptions: {
+      output: {
+        // Split vendors into separate chunks so the browser can cache them independently across deploys
+        manualChunks: {
+          maplibre: ['maplibre-gl'],
+          react: ['react', 'react-dom'],
+        }
+      }
+    }
+  }
 })
