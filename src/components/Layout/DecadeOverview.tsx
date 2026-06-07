@@ -244,6 +244,10 @@ const TableWrapper = styled.div`
   margin-bottom: 2.5rem;
   border: 1px solid ${theme.colors.lightSepia};
   border-radius: 4px;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const Table = styled.table`
@@ -465,6 +469,10 @@ const TripGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 0;
   border-top: 1px solid ${theme.colors.lightSepia};
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 `;
 
 const TripCard = styled.div<{ isMilestone: boolean }>`

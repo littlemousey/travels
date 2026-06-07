@@ -16,23 +16,26 @@ const App: React.FC = () => {
       <GlobalStyles />
       <AppContainer>
         <TabNavigation>
-          <TabButton 
-            active={activeTab === 'stories'} 
+          <TabButton
+            active={activeTab === 'stories'}
             onClick={() => setActiveTab('stories')}
           >
-            Reisverhalen
+            <FullLabel>Reisverhalen</FullLabel>
+            <ShortLabel>Verhalen</ShortLabel>
           </TabButton>
-          <TabButton 
-            active={activeTab === 'overview'} 
+          <TabButton
+            active={activeTab === 'overview'}
             onClick={() => setActiveTab('overview')}
           >
-            Overzicht locaties
+            <FullLabel>Overzicht locaties</FullLabel>
+            <ShortLabel>Locaties</ShortLabel>
           </TabButton>
-          <TabButton 
-            active={activeTab === 'decades'} 
+          <TabButton
+            active={activeTab === 'decades'}
             onClick={() => setActiveTab('decades')}
           >
-            Per decennium
+            <FullLabel>Per decennium</FullLabel>
+            <ShortLabel>Decennia</ShortLabel>
           </TabButton>
         </TabNavigation>
         <TabContent>
@@ -88,12 +91,32 @@ const TabButton = styled.button<{ active: boolean }>`
     padding: 1rem 1.5rem;
     font-size: 1rem;
   }
+
+  @media (max-width: 480px) {
+    padding: 0.85rem 0.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
 `;
 
 const TabContent = styled.div`
   flex: 1;
   min-height: 0;
   overflow: hidden;
+`;
+
+const FullLabel = styled.span`
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
+const ShortLabel = styled.span`
+  display: none;
+
+  @media (max-width: 480px) {
+    display: inline;
+  }
 `;
 
 export default App;
