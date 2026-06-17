@@ -203,4 +203,5 @@ export const markers: Marker[] = [
   { coords: [121.8433, 25.1075], label: 'Jiufen', sub: 'Taiwan' },
   { coords: [120.2124, 22.9997], label: 'Tainan', sub: 'Taiwan' },
   { coords: [120.3014, 22.6273], label: 'Kaohsiung', sub: 'Taiwan' },
+  { coords: [16.4402, 43.5081], label: 'Split', sub: 'Kroatië' },
 ];
