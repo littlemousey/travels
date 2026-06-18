@@ -8,6 +8,12 @@ import { DecadeOverview } from './components/Layout/DecadeOverview';
 
 type TabType = 'stories' | 'overview' | 'decades';
 
+const TAB_CONTENT: Record<TabType, React.ReactElement> = {
+  stories: <TravelMemories />,
+  overview: <LocationOverview />,
+  decades: <DecadeOverview />,
+};
+
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('stories');
 
@@ -39,7 +45,7 @@ const App: React.FC = () => {
           </TabButton>
         </TabNavigation>
         <TabContent>
-          {activeTab === 'stories' ? <TravelMemories /> : activeTab === 'overview' ? <LocationOverview /> : <DecadeOverview />}
+          {TAB_CONTENT[activeTab]}
         </TabContent>
       </AppContainer>
     </ChapterProvider>
