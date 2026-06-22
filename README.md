@@ -57,19 +57,49 @@ travels/
 
 ## ✨ Features
 
-- **Interactive Map**: Scroll through travel stories and watch the map fly to each location
-- **Custom Markers**: Clickable location pins with detailed information
-- **Smooth Animations**: Elegant transitions between chapters
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
-- **Type-Safe**: Full TypeScript support in React version
-- **Clean Architecture**: Separation of data, UI, and business logic
+### Tab navigation
+Three top-level tabs switch between the main views:
+- **Reisverhalen** — scroll-driven story with a side-by-side map
+- **Overzicht locaties** — interactive globe with all visited locations
+- **Per decennium** — summary table and expandable decade cards
 
-## 🗺️ Travel Timeline
+### Travel stories (Reisverhalen)
+- Split-screen layout: sticky map on the left (55%), scrollable story on the right (45%)
+- Scroll through chapters on desktop — the map automatically flies to the active location
+- Custom gold map markers that grow and highlight when a chapter is active
+- Clickable markers open a popup with the location name and description
+- Map overlay with a vignette effect and a floating title badge (1991–2026)
+- MapLibre navigation controls (zoom/rotation) rendered in the bottom-right corner
 
-The application showcases travels from:
-- **1991**: Birth in Utrecht, Netherlands
-- **1992**: First international trips (Germany, France, Belgium)
-- **1993**: Italian adventure (Bolzano, Venice, Dolomites)
+### Mobile layout (≤ 1024 px)
+- Map stacks above the story panel instead of side-by-side
+- Prev/next arrow buttons replace scroll-based chapter navigation
+- Horizontal swipe gestures switch between chapters
+- Animated progress bar shows current position within the chapter list
+
+### Globe overview (Overzicht locaties)
+- Full interactive 3D globe (MapLibre globe projection)
+- All visited locations plotted as markers
+- Markers on the hidden hemisphere are automatically hidden using a dot-product visibility check
+- Hover popups show the location name and subtitle in a styled dark tooltip
+
+### Decade overview (Per decennium)
+- Summary table showing trips per continent per decade (hidden on small screens)
+- Continent columns: Europa, Afrika, Noord-Amerika, Latijns-Amerika, Azië
+- Colour-coded count badges per continent cell
+- Expandable decade sections with a card grid of individual trips
+- Milestone badges for chapters categorised as life events
+- Life phase labels (Kind, Tiener, Jongvolwassene, Volwassene) with age ranges
+
+### Responsive & accessible
+- Responsive at three breakpoints: 1024 px, 768 px, and 480 px
+- Tab labels shorten to a single word below 480 px
+- Custom styled scrollbar in the story panel
+- Focus-visible outlines on interactive map controls
+
+## 🗺️ Travel timeline
+
+The application covers Ans' life and travels from 1991 to 2026, spanning Europe, Africa, North America, Latin America, and Asia.
 
 ## 🎨 Design Philosophy
 
