@@ -301,7 +301,7 @@ export const chapters: Chapter[] = [
     flag: '🇫🇷',
     heading: 'Krijtrotsen',
     locationTag: 'Étretat, Normandië',
-    content: 'Met het gezin op zomervakantie naar de Normandische kust. Het pittoreske Étretat met zijn iconische krijtrotsen en natuurlijke bogen die uitsteken in Het Kanaal.',
+    content: 'Met het gezin op zomervakantie naar de Normandische kust. Het pittoreske Étretat met zijn iconische krijtrotsen en natuurlijke bogen die uitsteken in Het Kanaal. Daarnaast maken we een volledige zonsverduistering mee aan de kant van de weg. Hele bijzondere ervaring om met onze eclipsbrillen de zon te zien verdwijnen en de wereld om je heen ineens stil en donker zien worden.',
     markerIndices: [34],
   },
   {
