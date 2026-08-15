@@ -1,6 +1,10 @@
-# Reisherinneringen — Ans
+# Mijn reisherinneringen
 
-An interactive map showcasing Ans' travel memories from 1991-1993, built with React and TypeScript.
+An interactive map showcasing my travel memories from 1991-2026, built with React and TypeScript.
+
+Demo can be viewed [here](https://littlemousey.github.io/travels/)
+
+<img src="screenshot.png" alt="Screenshot of the travel map" width="700">
 
 ## 🚀 Quick Start
 
@@ -99,25 +103,7 @@ Three top-level tabs switch between the main views:
 
 ## 🗺️ Travel timeline
 
-The application covers Ans' life and travels from 1991 to 2026, spanning Europe, Africa, North America, Latin America, and Asia.
-
-## 🎨 Design Philosophy
-
-The design evokes vintage travel journals with:
-- Elegant serif typography (Playfair Display, Cormorant Garamond)
-- Warm color palette (cream, sepia, gold)
-- Hand-crafted decorative elements
-- Story-driven navigation
-
-## 📝 Development
-
-```bash
-# Lint code
-npm run lint
-
-# Type check
-npx tsc --noEmit
-```
+The application covers life and travels from 1991 to 2026, spanning Europe, Africa, North America, Latin America, and Asia.
 
 ## 🚀 Deployment
 
@@ -139,21 +125,5 @@ This command:
 - **Base Path**: Set to `/travels/` in `vite.config.ts` for GitHub Pages
 - **Deploy Tool**: Uses `gh-pages` package for automated deployment
 - **Build Output**: `dist/` directory contains the production build
-
-### First-Time Setup
-
-1. Ensure your repository is named `travels` or update the `base` path in `vite.config.ts`
-2. Enable GitHub Pages in repository settings (Settings → Pages → Source: gh-pages branch)
-3. Run `npm run deploy` to publish
-
-### Adding New Travels
-
-To add new chapters:
-
-1. Add data to `src/data/chapters.ts`
-2. Add corresponding markers to `src/data/markers.ts`
-3. Update the type definitions if needed in `src/types/index.ts`
-
-## 📄 License
 
 Personal project © Ans
