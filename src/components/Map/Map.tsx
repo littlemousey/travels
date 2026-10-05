@@ -4,7 +4,29 @@ import styled from '@emotion/styled';
 import { useChapter } from '../../context/ChapterContext';
 import { MapOverlay } from './MapOverlay';
 import { theme } from '../../styles/GlobalStyles';
-import { createMarkerElement } from '../../utils/createMarkerElement';
+import { createMarkerElement, setMarkerActive } from '../../utils/createMarkerElement';
+import type { Chapter, Marker } from '../../types';
+
+const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json';
+
+const getCamera = ({ center, zoom, pitch, bearing }: Chapter) => ({ center, zoom, pitch, bearing });
+
+function addMarkers(map: maplibregl.Map, markers: Marker[]): maplibregl.Marker[] {
+  return markers.map((marker) => {
+    const { outerEl } = createMarkerElement();
+    const popup = new maplibregl.Popup({ offset: 20, closeButton: true })
+      .setHTML(`<h3>${marker.label}</h3><p>${marker.sub}</p>`);
+
+    return new maplibregl.Marker({ element: outerEl, anchor: 'bottom' })
+      .setLngLat(marker.coords)
+      .setPopup(popup)
+      .addTo(map);
+  });
+}
+
+function highlightMarkers(mapMarkers: maplibregl.Marker[], activeIndices: number[]): void {
+  mapMarkers.forEach((marker, i) => setMarkerActive(marker.getElement(), activeIndices.includes(i)));
+}
 
 export const Map: React.FC = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -21,61 +43,18 @@ export const Map: React.FC = () => {
 
     const map = new maplibregl.Map({
       container: mapContainerRef.current,
-      style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
-      center: chapters[0].center,
-      zoom: chapters[0].zoom,
-      pitch: chapters[0].pitch,
-      bearing: chapters[0].bearing,
-      scrollZoom: true,
-      dragPan: true,
-      touchZoomRotate: true,
-      touchPitch: true,
+      style: MAP_STYLE,
+      ...getCamera(chapters[0]),
     });
-
     map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
 
-    // Add markers after map loads
     map.on('load', () => {
-      // Clear stale markers from any previous map instance (React StrictMode runs
-      // effects twice in development, which would otherwise double the array).
-      markersRef.current = [];
-
-      markers.forEach((marker) => {
-        const { outerEl } = createMarkerElement();
-
-        const popup = new maplibregl.Popup({ offset: 20, closeButton: true })
-          .setHTML(`<h3>${marker.label}</h3><p>${marker.sub}</p>`);
-
-        const mapMarker = new maplibregl.Marker({
-          element: outerEl,
-          anchor: 'bottom'
-        })
-          .setLngLat(marker.coords)
-          .setPopup(popup)
-          .addTo(map);
-
-        markersRef.current.push(mapMarker);
-      });
-
-      // Apply the correct active state once, after all markers exist, based on
-      // the current chapter at the time the map finishes loading.
-      const activeIndices = chapters[currentChapterIndexRef.current].markerIndices;
-      markersRef.current.forEach((mapMarker, i) => {
-        const outerEl = mapMarker.getElement();
-        const innerEl = outerEl.querySelector('.custom-marker') as HTMLElement;
-        if (!innerEl || !activeIndices.includes(i)) return;
-        innerEl.classList.add('active-marker');
-        innerEl.style.background = theme.colors.accent;
-        outerEl.style.width = '22px';
-        outerEl.style.height = '22px';
-      });
+      markersRef.current = addMarkers(map, markers);
+      highlightMarkers(markersRef.current, chapters[currentChapterIndexRef.current].markerIndices);
     });
 
     mapRef.current = map;
-
-    return () => {
-      map.remove();
-    };
+    return () => map.remove();
   }, [chapters, markers]);
 
   // Update map view when chapter changes
@@ -83,39 +62,8 @@ export const Map: React.FC = () => {
     if (!mapRef.current) return;
 
     const chapter = chapters[currentChapterIndex];
-    const activeIndices = chapter.markerIndices;
-
-    // Update active markers styling
-    markersRef.current.forEach((marker, i) => {
-      const outerEl = marker.getElement();
-      const innerEl = outerEl.querySelector('.custom-marker') as HTMLElement;
-      if (!innerEl) return;
-      
-      const isActive = activeIndices.includes(i);
-      
-      if (isActive) {
-        innerEl.classList.add('active-marker');
-        innerEl.style.background = theme.colors.accent;
-        outerEl.style.width = '22px';
-        outerEl.style.height = '22px';
-      } else {
-        innerEl.classList.remove('active-marker');
-        innerEl.style.background = theme.colors.gold;
-        outerEl.style.width = '18px';
-        outerEl.style.height = '18px';
-      }
-    });
-
-    // Fly to the new location
-    mapRef.current.flyTo({
-      center: chapter.center,
-      zoom: chapter.zoom,
-      pitch: chapter.pitch,
-      bearing: chapter.bearing,
-      duration: 2800,
-      essential: true,
-      curve: 1.4,
-    });
+    highlightMarkers(markersRef.current, chapter.markerIndices);
+    mapRef.current.flyTo({ ...getCamera(chapter), duration: 2800, essential: true, curve: 1.4 });
   }, [currentChapterIndex, chapters]);
 
   return (

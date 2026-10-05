@@ -38,3 +38,14 @@ export function createMarkerElement(): { outerEl: HTMLDivElement; innerEl: HTMLD
 
   return { outerEl, innerEl };
 }
+
+export function setMarkerActive(outerEl: HTMLElement, isActive: boolean): void {
+  const innerEl = outerEl.querySelector<HTMLElement>('.custom-marker');
+  if (!innerEl) return;
+
+  const size = isActive ? '22px' : '18px';
+  innerEl.classList.toggle('active-marker', isActive);
+  innerEl.style.background = isActive ? theme.colors.accent : theme.colors.gold;
+  outerEl.style.width = size;
+  outerEl.style.height = size;
+}
